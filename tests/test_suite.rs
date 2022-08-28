@@ -1,3 +1,67 @@
+use flexiyaml::{parse, Node, NodeContent};
+use std::fmt::Write;
+use std::fs;
+use std::path::Path;
+
+fn test_error(path: &str) {
+    todo!("test_error");
+}
+
+fn test_events(path: &str) {
+    let path = Path::new(path);
+    let indata = fs::read(path.join("in.yaml")).unwrap();
+    let log_expected = fs::read(path.join("test.event")).unwrap();
+    let log_expected = String::from_utf8(log_expected).unwrap();
+
+    let node = parse(&indata);
+    let mut log = String::new();
+    log.push_str("+STR\n");
+    log.push_str("+DOC\n");
+    node_events(&node, &mut log);
+    log.push_str("-DOC\n");
+    log.push_str("-STR\n");
+
+    fn node_events(node: &Node, log: &mut String) {
+        match node {
+            Node::Owned(node) => match node {
+                NodeContent::Mapping(node) => {
+                    log.push_str("+MAP\n");
+                    for entry in &node.entries {
+                        node_events(&entry.0, log);
+                        node_events(&entry.1, log);
+                    }
+                    log.push_str("-MAP\n");
+                }
+                NodeContent::Sequence(node) => {
+                    log.push_str("+SEQ\n");
+                    for elem in &node.elements {
+                        node_events(elem, log);
+                    }
+                    log.push_str("-SEQ\n");
+                }
+                NodeContent::Scalar(node) => {
+                    writeln!(log, "=VAL :{}", node.value).unwrap();
+                }
+            },
+            Node::Shared(_) => todo!("Node::Shared in test_events"),
+        }
+    }
+
+    assert_eq!(log, log_expected);
+}
+
+fn test_json(path: &str) {
+    todo!("test_json");
+}
+
+fn test_out(path: &str) {
+    todo!("test_out");
+}
+
+fn test_emit(path: &str) {
+    todo!("test_emit");
+}
+
 #[test]
 #[should_panic]
 #[allow(non_snake_case)]
@@ -9940,24 +10004,4 @@ fn test_ZXT5_Implicit_key_followed_by_newline_and_adjacent_value_error() {
 #[allow(non_snake_case)]
 fn test_ZXT5_Implicit_key_followed_by_newline_and_adjacent_value_events() {
     test_events("./yaml-test-suite/ZXT5");
-}
-
-fn test_error(path: &str) {
-    todo!("test_error");
-}
-
-fn test_events(path: &str) {
-    todo!("test_events");
-}
-
-fn test_json(path: &str) {
-    todo!("test_json");
-}
-
-fn test_out(path: &str) {
-    todo!("test_out");
-}
-
-fn test_emit(path: &str) {
-    todo!("test_emit");
 }
