@@ -1,4 +1,4 @@
-use flexiyaml::{parse, Node, NodeContent};
+use flexiyaml::{parse, MappingStyle, Node, NodeContent, SequenceStyle};
 use std::fmt::Write;
 use std::fs;
 use std::path::Path;
@@ -27,7 +27,11 @@ fn test_events(path: &str) {
         match node {
             Node::Owned(node) => match node {
                 NodeContent::Mapping(node) => {
-                    log.push_str("+MAP\n");
+                    if matches!(node.style, Some(MappingStyle::Flow)) {
+                        log.push_str("+MAP {}\n");
+                    } else {
+                        log.push_str("+MAP\n");
+                    }
                     for entry in &node.entries {
                         node_events(&entry.0, log);
                         node_events(&entry.1, log);
@@ -35,7 +39,11 @@ fn test_events(path: &str) {
                     log.push_str("-MAP\n");
                 }
                 NodeContent::Sequence(node) => {
-                    log.push_str("+SEQ\n");
+                    if matches!(node.style, Some(SequenceStyle::Flow)) {
+                        log.push_str("+SEQ []\n");
+                    } else {
+                        log.push_str("+SEQ\n");
+                    }
                     for elem in &node.elements {
                         node_events(elem, log);
                     }
@@ -1857,7 +1865,6 @@ fn test_6BFJ_Mapping_key_and_flow_sequence_item_anchors_emit() {
 }
 
 #[test]
-#[should_panic]
 #[allow(non_snake_case)]
 fn test_6CA3_Tab_indented_top_flow_events() {
     test_events("./yaml-test-suite/6CA3");
@@ -7782,7 +7789,6 @@ fn test_Q4CL_Trailing_content_after_quoted_value_events() {
 }
 
 #[test]
-#[should_panic]
 #[allow(non_snake_case)]
 fn test_Q5MG_Tab_at_beginning_of_line_followed_by_a_flow_mapping_events() {
     test_events("./yaml-test-suite/Q5MG");

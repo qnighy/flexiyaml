@@ -4,6 +4,7 @@ use flexiyaml::{Mapping, Node, NodeContent, NodeHost, Scalar, Sequence};
 fn test_create_scalar() {
     let node = Node::Owned(NodeContent::Scalar(Scalar {
         value: "Hello, world!".into(),
+        style: None,
     }));
     format!("{:?}", node);
     Scalar::default();
@@ -11,14 +12,20 @@ fn test_create_scalar() {
 
 #[test]
 fn test_create_seq() {
-    let node = Node::Owned(NodeContent::Sequence(Sequence { elements: vec![] }));
+    let node = Node::Owned(NodeContent::Sequence(Sequence {
+        elements: vec![],
+        style: None,
+    }));
     format!("{:?}", node);
     Sequence::default();
 }
 
 #[test]
 fn test_create_map() {
-    let node = Node::Owned(NodeContent::Mapping(Mapping { entries: vec![] }));
+    let node = Node::Owned(NodeContent::Mapping(Mapping {
+        entries: vec![],
+        style: None,
+    }));
     format!("{:?}", node);
     Mapping::default();
 }
@@ -37,6 +44,9 @@ fn test_create_shared_node() {
     let host = NodeHost::new();
     let _ = host.clone();
     format!("{:?}", host);
-    let node = host.make_shared(NodeContent::Mapping(Mapping { entries: vec![] }));
+    let node = host.make_shared(NodeContent::Mapping(Mapping {
+        entries: vec![],
+        style: None,
+    }));
     format!("{:?}", node);
 }

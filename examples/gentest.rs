@@ -15,7 +15,7 @@ fn main() -> io::Result<()> {
             testfile,
             "{}",
             r###"
-use flexiyaml::{parse, Node, NodeContent};
+use flexiyaml::{parse, MappingStyle, Node, NodeContent, SequenceStyle};
 use std::fmt::Write;
 use std::fs;
 use std::path::Path;
@@ -44,7 +44,11 @@ fn test_events(path: &str) {
         match node {
             Node::Owned(node) => match node {
                 NodeContent::Mapping(node) => {
-                    log.push_str("+MAP\n");
+                    if matches!(node.style, Some(MappingStyle::Flow)) {
+                        log.push_str("+MAP {}\n");
+                    } else {
+                        log.push_str("+MAP\n");
+                    }
                     for entry in &node.entries {
                         node_events(&entry.0, log);
                         node_events(&entry.1, log);
@@ -52,7 +56,11 @@ fn test_events(path: &str) {
                     log.push_str("-MAP\n");
                 }
                 NodeContent::Sequence(node) => {
-                    log.push_str("+SEQ\n");
+                    if matches!(node.style, Some(SequenceStyle::Flow)) {
+                        log.push_str("+SEQ []\n");
+                    } else {
+                        log.push_str("+SEQ\n");
+                    }
                     for elem in &node.elements {
                         node_events(elem, log);
                     }
@@ -416,7 +424,6 @@ fn get_pending() -> HashSet<&'static str> {
         "test_6BFJ_Mapping_key_and_flow_sequence_item_anchors_json",
         "test_6BFJ_Mapping_key_and_flow_sequence_item_anchors_out",
         "test_6CA3_Tab_indented_top_flow_emit",
-        "test_6CA3_Tab_indented_top_flow_events",
         "test_6CA3_Tab_indented_top_flow_json",
         "test_6CA3_Tab_indented_top_flow_out",
         "test_6CK3_Spec_Example_6_26_Tag_Shorthands_emit",
@@ -1261,7 +1268,6 @@ fn get_pending() -> HashSet<&'static str> {
         "test_Q4CL_Trailing_content_after_quoted_value_error",
         "test_Q4CL_Trailing_content_after_quoted_value_events",
         "test_Q5MG_Tab_at_beginning_of_line_followed_by_a_flow_mapping_emit",
-        "test_Q5MG_Tab_at_beginning_of_line_followed_by_a_flow_mapping_events",
         "test_Q5MG_Tab_at_beginning_of_line_followed_by_a_flow_mapping_json",
         "test_Q5MG_Tab_at_beginning_of_line_followed_by_a_flow_mapping_out",
         "test_Q88A_Spec_Example_7_23_Flow_Content_emit",
