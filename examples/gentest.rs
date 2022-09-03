@@ -30,12 +30,14 @@ fn test_events(path: &str) {
     let log_expected = fs::read(path.join("test.event")).unwrap();
     let log_expected = String::from_utf8(log_expected).unwrap();
 
-    let node = parse(&indata);
+    let stream = parse(&indata);
     let mut log = String::new();
     log.push_str("+STR\n");
-    log.push_str("+DOC\n");
-    node_events(&node, &mut log);
-    log.push_str("-DOC\n");
+    for document in stream.documents {
+        log.push_str("+DOC\n");
+        node_events(&document.root, &mut log);
+        log.push_str("-DOC\n");
+    }
     log.push_str("-STR\n");
 
     fn node_events(node: &Node, log: &mut String) {
@@ -684,7 +686,6 @@ fn get_pending() -> HashSet<&'static str> {
         "test_AB8U_Sequence_entry_that_looks_like_two_with_wrong_indentation_json",
         "test_AB8U_Sequence_entry_that_looks_like_two_with_wrong_indentation_out",
         "test_AVM7_Empty_Stream_emit",
-        "test_AVM7_Empty_Stream_events",
         "test_AVM7_Empty_Stream_json",
         "test_AVM7_Empty_Stream_out",
         "test_AZ63_Sequence_With_Same_Indentation_as_Parent_Mapping_emit",
