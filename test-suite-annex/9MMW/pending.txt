@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n+SEQ\n-SEQ\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+SEQ\n+SEQ []\n+MAP {}\n=VAL :YAML\n=VAL :separate\n-MAP\n-SEQ\n+SEQ []\n+MAP {}\n=VAL \"JSON like\n=VAL :adjacent\n-MAP\n-SEQ\n+SEQ []\n+MAP {}\n+MAP {}\n=VAL :JSON\n=VAL :like\n-MAP\n=VAL :adjacent\n-MAP\n-SEQ\n-SEQ\n-DOC\n-STR\n"`

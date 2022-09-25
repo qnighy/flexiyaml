@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n=VAL :\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC ---\n+MAP <tag:example.com,2011:A>\n=VAL :a\n=VAL :b\n-MAP\n-DOC\n+DOC ---\n"`

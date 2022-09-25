@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n=VAL :\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+MAP\n=VAL :single\n=VAL 'text\n=VAL :double\n=VAL \"text\n-MAP\n-DOC\n-STR\n"`

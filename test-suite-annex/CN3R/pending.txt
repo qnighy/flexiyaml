@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n=VAL :\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+SEQ [] &flowseq\n+MAP {}\n=VAL :a\n=VAL :b\n-MAP\n+MAP {}\n=VAL &c :c\n=VAL :d\n-MAP\n+MAP {}\n=VAL &e :e\n=VAL :f\n-MAP\n+MAP {} &g\n=VAL :g\n=VAL :h\n-MAP\n-SEQ\n-DOC\n-STR\n"`

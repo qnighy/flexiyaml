@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n=VAL :\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC ---\n+SEQ <tag:clarkevans.com,2002:shape>\n+MAP <tag:clarkevans.com,2002:circle>\n=VAL :center\n+MAP {} &ORIGIN\n=VAL :x\n=VAL :73\n=VAL :y\n=VAL :129\n-MAP\n=VAL :radius\n=VAL :7\n-MAP\n+MAP <tag:clarkevans.com,2002:line>\n=VAL :start\n=ALI *ORIGIN\n=VAL :finish\n+MAP {}\n=VAL :x\n=VAL :89\n=VAL :y\n=VAL :102\n-MAP\n-MAP\n+MAP <tag:clarkevans.com,2002:label>\n=VAL :start\n=ALI *ORIGIN\n=VAL :color\n=VAL :0xFFEEBB\n=VAL :text\n=VAL :Pretty vector drawing.\n-MAP\n-SEQ\n-DOC\n-STR\n"`

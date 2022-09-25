@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n+SEQ\n-SEQ\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC ---\n+MAP\n=VAL :time\n=VAL :20:03:20\n=VAL :player\n=VAL :Sammy Sosa\n=VAL :action\n=VAL :strike (miss)\n-MAP\n-DOC ...\n+DOC ---\n+MAP\n=VAL :time\n=VAL :20:03:47\n=VAL :player\n=VAL :Sammy Sosa\n=VAL :action\n=VAL :grand slam\n-MAP\n-DOC ...\n-STR\n"`

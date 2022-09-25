@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n=VAL :\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+MAP\n=VAL :american\n+SEQ\n=VAL :Boston Red Sox\n=VAL :Detroit Tigers\n=VAL :New York Yankees\n-SEQ\n=VAL :national\n+SEQ\n=VAL :New York Mets\n=VAL :Chicago Cubs\n=VAL :Atlanta Braves\n-SEQ\n-MAP\n-DOC\n-STR\n"`

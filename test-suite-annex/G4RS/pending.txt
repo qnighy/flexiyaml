@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n=VAL :\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+MAP\n=VAL :unicode\n=VAL \"Sosa did fine.☺\n=VAL :control\n=VAL \"\\b1998\\t1999\\t2000\\n\n=VAL :hex esc\n=VAL \"\\r\\n is \\r\\n\n=VAL :single\n=VAL '\"Howdy!\" he cried.\n=VAL :quoted\n=VAL ' # Not a 'comment'.\n=VAL :tie-fighter\n=VAL '|\\\\-*-/|\n-MAP\n-DOC\n-STR\n"`

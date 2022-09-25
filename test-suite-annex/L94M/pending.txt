@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n+MAP\n-MAP\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+MAP\n=VAL <tag:yaml.org,2002:str> :a\n=VAL <tag:yaml.org,2002:int> :47\n=VAL :c\n=VAL <tag:yaml.org,2002:str> :d\n-MAP\n-DOC\n-STR\n"`

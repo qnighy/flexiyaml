@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n+SEQ\n-SEQ\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC ---\n=VAL &a1 <tag:yaml.org,2002:str> :scalar1\n-DOC\n+DOC ---\n=VAL &a2 <tag:yaml.org,2002:str> :scalar2\n-DOC\n+DOC ---\n=VAL &a3 <tag:yaml.org,2002:str> :scalar3\n-DOC\n+DOC ---\n+MAP &a4 <tag:yaml.org,2002:map>\n=VAL &a5 <tag:yaml.org,2002:str> :key5\n=VAL :value4\n-MAP\n-DOC\n+DOC ---\n+MAP\n=VAL :a6\n=VAL :1\n=VAL &anchor6 :b6\n=VAL :2\n-MAP\n-DOC\n+DOC ---\n+MAP <tag:yaml.org,2002:map>\n=VAL &a8 <tag:yaml.org,2002:str> :key8\n=VAL :value7\n-MAP\n-DOC\n+DOC ---\n+MAP <tag:yaml.org,2002:map>\n=VAL &a10 <tag:yaml.org,2002:str> :key10\n=VAL :value9\n-MAP\n-DOC\n+DOC ---\n=VAL &a11 <tag:yaml.org,2002:str> :value11\n-DOC\n-STR\n"`

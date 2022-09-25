@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n+SEQ\n-SEQ\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+SEQ\n=VAL |literal\\n\n=VAL > folded\\n\n=VAL |keep\\n\\n\n=VAL > strip\n-SEQ\n-DOC\n-STR\n"`

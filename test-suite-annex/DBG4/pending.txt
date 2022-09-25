@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n+SEQ\n-SEQ\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+SEQ\n=VAL :::vector\n=VAL \": - ()\n=VAL :Up, up, and away!\n=VAL :-123\n=VAL :http://example.com/foo#bar\n+SEQ []\n=VAL :::vector\n=VAL \": - ()\n=VAL \"Up, up and away!\n=VAL :-123\n=VAL :http://example.com/foo#bar\n-SEQ\n-SEQ\n-DOC\n-STR\n"`

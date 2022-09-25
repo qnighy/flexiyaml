@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n+SEQ\n-SEQ\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+SEQ\n+MAP {}\n=VAL :url\n=VAL :http://example.org\n-MAP\n-SEQ\n-DOC\n-STR\n"`

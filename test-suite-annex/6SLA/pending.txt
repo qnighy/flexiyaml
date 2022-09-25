@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n=VAL :\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+MAP\n=VAL \"foo\\nbar:baz\\tx \\\\$%^&*()x\n=VAL :23\n=VAL 'x\\\\ny:z\\\\tx $%^&*()x\n=VAL :24\n-MAP\n-DOC\n-STR\n"`

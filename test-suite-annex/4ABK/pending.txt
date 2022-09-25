@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n+MAP {}\n-MAP\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC\n+MAP {}\n=VAL :unquoted\n=VAL \"separate\n=VAL :http://foo.com\n=VAL :\n=VAL :omitted value\n=VAL :\n-MAP\n-DOC\n-STR\n"`

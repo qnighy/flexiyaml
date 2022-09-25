@@ -1,0 +1,3 @@
+assertion failed: `(left == right)`
+  left: `"+STR\n+DOC\n+SEQ\n-SEQ\n-DOC\n-STR\n"`,
+ right: `"+STR\n+DOC ---\n+MAP\n=VAL :key\n=VAL :value\n=VAL :\n=VAL :empty key\n-MAP\n-DOC\n+DOC ---\n+MAP {}\n=VAL :key\n=VAL :value\n=VAL :\n=VAL :empty key\n-MAP\n-DOC\n+DOC ---\n+MAP\n=VAL :\n=VAL :\n-MAP\n-DOC\n+DOC ---\n+MAP {}\n=VAL :\n=VAL :\n-MAP\n-DOC\n-STR\n"`
